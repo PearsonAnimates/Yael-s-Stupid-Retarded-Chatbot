@@ -20,20 +20,22 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = null;
+		this.movieList = new ArrayList<String>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
-		this.questions = null;
+		this.questions = new String [1];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
-		this.currentTime = null;
-		this.topics = null;
+//		this.currentTime = null;
+		this.topics = new String [3];
 		this.verbs = new String [4];
 		this.followUps = null;
 		
 		buildVerbs();
+		buildTopics();
+		buildQuestions();
 		buildMovieList();
 		buildShoppingList();
 	}
@@ -44,6 +46,18 @@ public class Chatbot
 		verbs[1] = "dislike";
 		verbs[2] = "am ambivalent about";
 		verbs[3] = "am thinking about";
+	}
+	
+	private void buildTopics()
+	{
+		topics[0] = "Calvin Hobbs 2.0";
+		topics[1] = "Porker the Benevolent";
+		topics[2] = "Makai-3PO";
+	}
+	
+	private void buildQuestions()
+	{
+		questions[1] =  "Are you dumb?";
 	}
 
 	private void buildMovieList()
@@ -69,11 +83,6 @@ public class Chatbot
 		
 	}
 	
-	private void buildQuestions()
-	{
-		
-	}
-	
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -88,7 +97,6 @@ public class Chatbot
 	{
 		String response = "I ";
 		int random = (int) (Math.random() * verbs.length);
-		
 		response += verbs[random];
 		
 		random = (int) (Math.random() * topics.length);
@@ -149,12 +157,26 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
+		if (exitString.equalsIgnoreCase("quit"))
+		{
+			return true;
+		}
 		return false;
 	}
 
 	public boolean keyboardMashChecker(String sample)
 	{
-		return false;
+		boolean anything = false;
+		if(sample != null)
+		{
+			anything = false;
+		}
+		else
+		{
+			anything = true;
+		}
+
+		return anything;
 	}
 	
 	public List<String> getMovieList()
