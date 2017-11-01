@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Chatbot
 {
-	private List<Movie> movieList;
+	private List<String> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
 	private String [] verbs;
@@ -21,7 +21,7 @@ public class Chatbot
 	public Chatbot(String username)
 	{
 		this.movieList = null;
-		this.shoppingList = null;
+		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
 		this.questions = null;
@@ -30,18 +30,38 @@ public class Chatbot
 		this.intro = null;
 		this.currentTime = null;
 		this.topics = null;
-		this.verbs = null;
+		this.verbs = new String [4];
 		this.followUps = null;
+		
+		buildVerbs();
+		buildMovieList();
+		buildShoppingList();
+	}
+	
+	private void buildVerbs()
+	{
+		verbs[0] = "like";
+		verbs[1] = "dislike";
+		verbs[2] = "am ambivalent about";
+		verbs[3] = "am thinking about";
 	}
 
 	private void buildMovieList()
 	{
-		
+		movieList.add("The Lord Of The Flies");
+		movieList.add("Chicken Run");
+		movieList.add("Turd III");
+		movieList.add("The Lord Of The Rings Trilogy: Extended Edition");
+		movieList.add("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
 	}
 	
 	private void buildShoppingList()
 	{
-		
+		shoppingList.add("snacks");
+		shoppingList.add("veggies");
+		shoppingList.add("protien");
+		shoppingList.add("slug bait");
+		shoppingList.add("gross things");
 	}
 	
 	private void buildCuteAnimals()
@@ -56,9 +76,30 @@ public class Chatbot
 	
 	public String processConversation(String input)
 	{
-		return null;
+		String chatbotResponse = "";
+		chatbotResponse += "You said:" + "\n" + input+ "\n";
+		
+		chatbotResponse += buildChatbotResponse();
+		
+		return chatbotResponse;
 	}
 	
+	private String buildChatbotResponse()
+	{
+		String response = "I ";
+		int random = (int) (Math.random() * verbs.length);
+		
+		response += verbs[random];
+		
+		random = (int) (Math.random() * topics.length);
+		response += " " + topics[random] + ".\n";
+		
+		random = (int) (Math.random() * questions.length);
+		response += questions[random];
+		
+		return response;
+	}
+
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -116,7 +157,7 @@ public class Chatbot
 		return false;
 	}
 	
-	public List<Movie> getMovieList()
+	public List<String> getMovieList()
 	{
 		return movieList;
 	}
