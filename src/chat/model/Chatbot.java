@@ -3,10 +3,11 @@ package chat.model;
 import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import chat.model.Movie;
 
 public class Chatbot
 {
-	private List<String> movieList;
+	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
 	private String [] verbs;
@@ -20,11 +21,11 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = new ArrayList<String>();
+		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = null;
 		this.currentTime = null;
-		this.questions = new String [1];
+		this.questions = new String [2];
 		this.username = username;
 		this.content = null;
 		this.intro = null;
@@ -33,14 +34,14 @@ public class Chatbot
 		this.verbs = new String [4];
 		this.followUps = null;
 		
-		buildVerbs();
+		buildverbs();
 		buildTopics();
 		buildQuestions();
 		buildMovieList();
 		buildShoppingList();
 	}
 	
-	private void buildVerbs()
+	private void buildverbs()
 	{
 		verbs[0] = "like";
 		verbs[1] = "dislike";
@@ -50,23 +51,29 @@ public class Chatbot
 	
 	private void buildTopics()
 	{
-		topics[0] = "Calvin Hobbs 2.0";
-		topics[1] = "Porker the Benevolent";
+		topics[0] = "Calvin Hobbs LVIII";
+		topics[1] = "Porker The Benevolent";
 		topics[2] = "Makai-3PO";
 	}
 	
 	private void buildQuestions()
 	{
-		questions[1] =  "Are you dumb?";
+		questions[0] =  "Are you dumb?";
+		questions[1] = "Why would Calvin not be an insult to human existence?";
 	}
 
 	private void buildMovieList()
 	{
-		movieList.add("The Lord Of The Flies");
-		movieList.add("Chicken Run");
-		movieList.add("Turd III");
-		movieList.add("The Lord Of The Rings Trilogy: Extended Edition");
-		movieList.add("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
+		Movie d1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
+		Movie d2 = new Movie("Chicken Run");
+		Movie d3 = new Movie("Turd III");
+		Movie d4 = new Movie("Calvin is dumb");
+		Movie d5 = new Movie("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
+		movieList.add(d1);
+		movieList.add(d2);
+		movieList.add(d3);
+		movieList.add(d4);
+		movieList.add(d5);
 	}
 	
 	private void buildShoppingList()
@@ -179,7 +186,7 @@ public class Chatbot
 		return anything;
 	}
 	
-	public List<String> getMovieList()
+	public List<Movie> getMovieList()
 	{
 		return movieList;
 	}
@@ -199,7 +206,7 @@ public class Chatbot
 		return null;
 	}
 	
-	public String[] getVerbs()
+	public String[] getverbs()
 	{
 		return verbs;
 	}

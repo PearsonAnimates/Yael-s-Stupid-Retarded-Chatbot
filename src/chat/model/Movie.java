@@ -12,7 +12,7 @@ public class Movie
 	private LocalDate releaseDate;
 	private double starScore;
 	
-	public Movie(String title, String genre, String ratingMPAA, String review, int length, LocalDate releaseDate, double starScore)
+	public Movie(String title)
 	{
 		this.title = "";
 		this.genre = "";
@@ -20,22 +20,24 @@ public class Movie
 		this.review = "";
 		this.length = 99;
 		this.releaseDate = null;
-		this.starScore = Double.NaN;
+		this.starScore = 0.0;
 	}
 
 	public String getTitle()
 	{
+		this.title = "A Title";
 		return title;
 	}
 
 	public String getGenre()
 	{
-		this.genre = "@@@@@@@";
+		this.genre = "Action";
 		return genre;
 	}
 
 	public String getRatingMPAA()
 	{
+		this.ratingMPAA = "A Rating";
 		return ratingMPAA;
 	}
 
