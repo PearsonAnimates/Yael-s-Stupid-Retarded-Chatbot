@@ -64,16 +64,16 @@ public class Chatbot
 
 	private void buildMovieList()
 	{
-		Movie d1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
-		Movie d2 = new Movie("Chicken Run");
-		Movie d3 = new Movie("Turd III");
-		Movie d4 = new Movie("Calvin is dumb");
-		Movie d5 = new Movie("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
-		movieList.add(d1);
-		movieList.add(d2);
-		movieList.add(d3);
-		movieList.add(d4);
-		movieList.add(d5);
+		Movie Calvinv1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
+		Movie Calvinv2 = new Movie("Chicken Run");
+		Movie Calvinv3 = new Movie("Turd III");
+		Movie Calvinv4 = new Movie("Calvin is trying to convince Porker he's gay... At this point I'm not sure if he's lying");
+		Movie Calvinv5 = new Movie("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
+		movieList.add(Calvinv1);
+		movieList.add(Calvinv2);
+		movieList.add(Calvinv3);
+		movieList.add(Calvinv4);
+		movieList.add(Calvinv5);
 	}
 	
 	private void buildShoppingList()
@@ -90,6 +90,11 @@ public class Chatbot
 		
 	}
 	
+	/**
+	 * Uses your response to attempt a sensible response.
+	 * @param inputs user text as a string.
+	 * @return returns your response, and buildChatBotResponse.
+	 */
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -100,10 +105,16 @@ public class Chatbot
 		return chatbotResponse;
 	}
 	
+	
+	/**
+	 * Randomly selects pre-selected short phrases/words to make a sentence, but will not gaurantee flow of words.
+	 * @return Returns pre-selected short phrases/words and outputs them <-- it will be visible on popup to the user.
+	 */
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
 		int random = (int) (Math.random() * verbs.length);
+		
 		response += verbs[random];
 		
 		random = (int) (Math.random() * topics.length);
@@ -112,9 +123,22 @@ public class Chatbot
 		random = (int) (Math.random() * questions.length);
 		response += questions[random];
 		
+		random = (int) (Math.random() * 2);
+		
+		if (random % 2 == 0)
+		{
+			random = (int) (Math.random() * movieList.size());
+			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
+		}
+		
 		return response;
 	}
 
+	/**
+	 * Checks if user input 3 characters or more, if not, the program goes crash, burn, and die.
+	 * @param input must be greater than 2
+	 * @return if input isn't big enough, validLength returns false, aka, program dies.
+	 */
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -132,10 +156,21 @@ public class Chatbot
 		return false;
 	}
 	
-	public boolean userNameChecker(String input)
-	{
-		return false;
-	}
+	
+	// Need to fix the dumb username
+	
+//	public boolean userNameChecker(String input)
+//	{
+//		boolean userName = false;
+		
+//		if(userName == false)
+//		{
+//			userName = true;
+//			this.username = @yoloswag;
+//		}
+		
+//		return userName;
+//	}
 	
 	public boolean contentChecker(String contentCheck)
 	{
@@ -164,11 +199,17 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
+		boolean Quit = false;
+		
 		if (exitString.equalsIgnoreCase("quit"))
 		{
-			return true;
+			Quit = true;
 		}
-		return false;
+		else
+		{
+			Quit = false;
+		}
+		return Quit;
 	}
 
 	public boolean keyboardMashChecker(String sample)
