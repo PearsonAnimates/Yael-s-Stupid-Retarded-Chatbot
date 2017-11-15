@@ -11,13 +11,13 @@ public class ChatFrame extends JFrame
 	{
 		super();
 		this.appController = appController;
-		appPanel = new ChatPanel(appController);
+//		appPanel = new ChatPanel(appController);
 		setupFrame();
 	}
 	
 	private void setupFrame()
 	{
-		this.setContentPane(appPanel);
+//		this.setContentPane(appPanel);
 		this.setSize(600, 600);
 		this.setTitle("Mad Calvin");
 		this.setResizable(false);
