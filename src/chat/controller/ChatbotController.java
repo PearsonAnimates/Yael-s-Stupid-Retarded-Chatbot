@@ -14,11 +14,14 @@ public class ChatbotController
 	{
 		chatbot = new Chatbot("food");
 		display = new PopupDisplay();
+		//View initialized after Model
+		appFrame = new ChatFrame(this);
 	}
 	
 	public void start()
 	{
 		String response = display.collectResponse("wa u wann talk bout?");
+		
 		/* While method checks for a response greater than two, and checks if it isn't quit, if both
 		 * evaluate to "true" (response > 2 and not quit), it will refresh the popup with your response
 		 * with a new question
@@ -26,11 +29,16 @@ public class ChatbotController
 		 *	|
 		 *	V
 		 */
-		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
-		{
-			response = popupChat(response);						
-			response = display.collectResponse(response);
-		}
+//		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
+//		{
+//			response = popupChat(response);						
+//			response = display.collectResponse(response);
+//		}
+	}
+	
+	private String interactWithChatbot(String input)
+	{
+		return null;
 	}
 	
 	private String popupChat(String chat)
@@ -42,6 +50,19 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
+	public Chatbot getChatbot()
+	{
+		return chatbot;
+	}
 	
+	public PopupDisplay getDisplay()
+	{
+		return display;
+	}
+	
+	public ChatFrame getChatFrame()
+	{
+		return appFrame;
+	}
 	
 }
