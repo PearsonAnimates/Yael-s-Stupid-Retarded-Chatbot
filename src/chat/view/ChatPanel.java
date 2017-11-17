@@ -27,6 +27,7 @@ public class ChatPanel extends JPanel
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
 		
+		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -39,6 +40,9 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		chatArea.setEnabled(false);
+		chatArea.setEditable(false);
+		
 	}
 	
 	private void setupLayout()

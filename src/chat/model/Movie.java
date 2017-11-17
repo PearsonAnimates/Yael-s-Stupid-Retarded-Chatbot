@@ -37,7 +37,8 @@ public class Movie
 
 	public String getRatingMPAA()
 	{
-		this.ratingMPAA = "A Rating";
+		
+		this.ratingMPAA = "G";
 		return ratingMPAA;
 	}
 
@@ -64,21 +65,25 @@ public class Movie
 	public void setTitle(String title)
 	{
 		this.title = title;
+		title = "Legacy of Pirates";
 	}
 
 	public void setGenre(String genre)
 	{
 		this.genre = genre;
+		genre = "Comedy";
 	}
 
 	public void setRatingMPAA(String ratingMPAA)
 	{
 		this.ratingMPAA = ratingMPAA;
+		ratingMPAA = "PG-13";
 	}
 
 	public void setReview(String review)
 	{
 		this.review = review;
+		review = "This is a movie review, I think. Lol.";
 	}
 
 	public void setLength(int length)
@@ -89,6 +94,7 @@ public class Movie
 	public void setReleaseDate(LocalDate releaseDate)
 	{
 		this.releaseDate = releaseDate;
+		releaseDate = LocalDate.now();
 	}
 
 	public void setStarScore(double starScore)

@@ -7,6 +7,9 @@ import chat.model.Movie;
 
 public class Chatbot
 {
+	/*
+	 * A bunch of variables used for this project that have been given types.
+	 */
 	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
@@ -19,6 +22,9 @@ public class Chatbot
 	private String intro;
 	private LocalTime currentTime;
 	
+	/*
+	 * Taking all variables and giving them values.
+	 */
 	public Chatbot(String username)
 	{
 		this.movieList = new ArrayList<Movie>();
@@ -29,7 +35,7 @@ public class Chatbot
 		this.username = username;
 		this.content = null;
 		this.intro = null;
-//		this.currentTime = null;
+		this.currentTime = LocalTime.now();
 		this.topics = new String [3];
 		this.verbs = new String [4];
 		this.followUps = null;
@@ -41,6 +47,9 @@ public class Chatbot
 		buildShoppingList();
 	}
 	
+	/*
+	 * a list of verbs for the chatbot to use as a part of a sentence
+	 */
 	private void buildverbs()
 	{
 		verbs[0] = "like";
@@ -49,6 +58,9 @@ public class Chatbot
 		verbs[3] = "am thinking about";
 	}
 	
+	/*
+	 * a list of Topics for the chatbot to use as a part of a sentence
+	 */
 	private void buildTopics()
 	{
 		topics[0] = "Calvin Hobbs LVIII";
@@ -56,12 +68,18 @@ public class Chatbot
 		topics[2] = "Makai-3PO";
 	}
 	
+	/*
+	 * a list of Topics for the chatbot to use as a part of a sentence
+	 */
 	private void buildQuestions()
 	{
 		questions[0] =  "Are you dumb?";
 		questions[1] = "Why would Calvin not be an insult to human existence?";
 	}
 
+	/*
+	 * a list of Movies for the chatbot to use as a part of a sentence
+	 */
 	private void buildMovieList()
 	{
 		Movie Calvinv1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
@@ -76,6 +94,9 @@ public class Chatbot
 		movieList.add(Calvinv5);
 	}
 	
+	/*
+	 * a list of Shopping items for the chatbot to use as a part of a sentence
+	 */
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -84,7 +105,9 @@ public class Chatbot
 		shoppingList.add("slug bait");
 		shoppingList.add("gross things");
 	}
-	
+	/*
+	 * will be a list of cute animals for the chatbot to use as a part of a sentence
+	 */
 	private void buildCuteAnimals()
 	{
 		
@@ -159,18 +182,11 @@ public class Chatbot
 	
 	// Need to fix the dumb username
 	
-//	public boolean userNameChecker(String input)
-//	{
-//		boolean userName = false;
+	public boolean userNameChecker(String input)
+	{
+		return false;
 		
-//		if(userName == false)
-//		{
-//			userName = true;
-//			this.username = @yoloswag;
-//		}
-		
-//		return userName;
-//	}
+	}
 	
 	public boolean contentChecker(String contentCheck)
 	{

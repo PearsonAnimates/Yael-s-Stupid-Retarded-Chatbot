@@ -3,6 +3,7 @@ package chat.controller;
 import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
+import chat.view.ChatPanel;
 
 public class ChatbotController
 {
@@ -20,7 +21,7 @@ public class ChatbotController
 	
 	public void start()
 	{
-		String response = display.collectResponse("wa u wann talk bout?");
+//		String response = display.collectResponse("wa u wann talk bout?");
 		
 		/* While method checks for a response greater than two, and checks if it isn't quit, if both
 		 * evaluate to "true" (response > 2 and not quit), it will refresh the popup with your response
@@ -36,7 +37,7 @@ public class ChatbotController
 //		}
 	}
 	
-	private String interactWithChatbot(String input)
+	public String interactWithChatbot(String input)
 	{
 		return null;
 	}
