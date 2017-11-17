@@ -21,25 +21,27 @@ public class ChatbotController
 	
 	public void start()
 	{
-//		String response = display.collectResponse("wa u wann talk bout?");
-		
-		/* While method checks for a response greater than two, and checks if it isn't quit, if both
-		 * evaluate to "true" (response > 2 and not quit), it will refresh the popup with your response
-		 * with a new question
-		 *	|
-		 *	|
-		 *	V
-		 */
-//		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
-//		{
-//			response = popupChat(response);						
-//			response = display.collectResponse(response);
-//		}
+		display.displayText("Welcome to Chatbot, a very dumb one at that.");
 	}
 	
 	public String interactWithChatbot(String input)
 	{
-		return null;
+		String ChatbotSays = "";
+		
+		if(chatbot.quitChecker(input))
+		{
+			close();
+		}
+		
+		ChatbotSays += chatbot.processConversation(input);
+		
+		return ChatbotSays;
+	}
+	
+	private void close()
+	{
+		display.displayText("Goodbye");
+		System.exit(0);
 	}
 	
 	private String popupChat(String chat)

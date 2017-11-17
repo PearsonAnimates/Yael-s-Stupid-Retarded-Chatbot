@@ -136,8 +136,8 @@ public class Chatbot
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
-		int random = (int) (Math.random() * verbs.length);
 		
+		int random = (int) (Math.random() * verbs.length);	
 		response += verbs[random];
 		
 		random = (int) (Math.random() * topics.length);
@@ -184,8 +184,7 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		return false;
-		
+		return false;		
 	}
 	
 	public boolean contentChecker(String contentCheck)
@@ -221,10 +220,7 @@ public class Chatbot
 		{
 			Quit = true;
 		}
-		else
-		{
-			Quit = false;
-		}
+		
 		return Quit;
 	}
 
