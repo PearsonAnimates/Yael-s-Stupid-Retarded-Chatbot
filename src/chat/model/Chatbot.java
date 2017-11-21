@@ -29,8 +29,7 @@ public class Chatbot
 	{
 		this.movieList = new ArrayList<Movie>();
 		this.shoppingList = new ArrayList<String>();
-		this.cuteAnimalMemes = null;
-		this.currentTime = null;
+		this.cuteAnimalMemes = new ArrayList<String>();
 		this.questions = new String [2];
 		this.username = username;
 		this.content = null;
@@ -45,6 +44,7 @@ public class Chatbot
 		buildQuestions();
 		buildMovieList();
 		buildShoppingList();
+		buildCuteAnimalMemes();
 	}
 	
 	/*
@@ -108,9 +108,10 @@ public class Chatbot
 	/*
 	 * will be a list of cute animals for the chatbot to use as a part of a sentence
 	 */
-	private void buildCuteAnimals()
+	private void buildCuteAnimalMemes()
 	{
-		
+		cuteAnimalMemes.add("This is supposed to be a meme, I don't know if I should actually add an image or not... *snores*"
+				+ " *lazy*");
 	}
 	
 	/**
@@ -184,7 +185,19 @@ public class Chatbot
 	
 	public boolean userNameChecker(String input)
 	{
-		return false;		
+		boolean UsernameChecker = false;
+		this.username = "@morgan";
+		input = "@morgan";
+		
+		//Broken thing
+//		if(input == "@morgan")
+//		{
+//			username.concat(getUsername())
+//			UsernameChecker = true;
+//		}
+		
+		return UsernameChecker;
+		
 	}
 	
 	public boolean contentChecker(String contentCheck)
