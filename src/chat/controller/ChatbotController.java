@@ -38,6 +38,23 @@ public class ChatbotController
 		return ChatbotSays;
 	}
 	
+	public String useCheckers(String text)
+	{
+		String response = "";
+		
+		if(chatbot.contentChecker(text))
+		{
+			response += "This text matches the special content\n";
+		}
+		if(chatbot.cuteAnimalMemeChecker(text))
+		{
+			response += "";
+		}
+		//continue with all checkers except length and quit checker
+		
+		return response;
+	}
+	
 	private void close()
 	{
 		display.displayText("Goodbye");

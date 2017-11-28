@@ -155,9 +155,28 @@ public class Chatbot
 			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
 		
+		int followup = (int) (Math.random() * 5);
+				
+		switch (followup)
+		{
+		case 0:
+			response += followUps[0] + "\n";
+			break;
+		case 3:
+			response += followUps[1] + "\n";
+			break;
+		case 1:
+			response += followUps[2] + "\n";
+		default:
+			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
+			break;
+		}
+		
 		return response;
 	}
 
+	
 	/**
 	 * Checks if user input 3 characters or more, if not, the program goes crash, burn, and die.
 	 * @param input must be greater than 2
@@ -177,7 +196,10 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		return false;
+		input = "<B>  </B>";
+		input = "<>";
+		
+		return true;
 	}
 	
 	
@@ -226,15 +248,19 @@ public class Chatbot
 	}
 
 	public boolean quitChecker(String exitString)
-	{
-		boolean Quit = false;
-		
-		if (exitString.equalsIgnoreCase("quit"))
+	{	
+		if(exitString.equals("Quit"))
 		{
-			Quit = true;
+			return true;
 		}
-		
-		return Quit;
+		else if(exitString.equals("QUIT"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public boolean keyboardMashChecker(String sample)

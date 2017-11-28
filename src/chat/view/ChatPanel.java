@@ -9,6 +9,7 @@ import chat.controller.ChatbotController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 
 public class ChatPanel extends JPanel
 {
@@ -18,20 +19,21 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	private JButton checkerButton;
-	
+	private JLabel infoLabel;
+
 	public ChatPanel(ChatbotController appController)
 	{
 		super();
 		this.appController = appController;
-		
-		//Init GUI data members
+
+		// Init GUI data members
 		chatButton = new JButton("chat");
-		chatArea = new JTextArea(10,25);
+		chatArea = new JTextArea(10, 25);
 		inputField = new JTextField(20);
+		infoLabel = new JLabel("Type to talk to stupid bot");
 		appLayout = new SpringLayout();
 		checkerButton = new JButton("Quit");
-		
-		
+
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -47,9 +49,9 @@ public class ChatPanel extends JPanel
 		this.add(chatArea);
 		chatArea.setEnabled(false);
 		chatArea.setEditable(false);
-		
+
 	}
-	
+
 	private void setupLayout()
 	{
 		appLayout.putConstraint(SpringLayout.NORTH, chatArea, 20, SpringLayout.NORTH, this);
@@ -62,7 +64,7 @@ public class ChatPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.NORTH, checkerButton, 0, SpringLayout.NORTH, chatButton);
 		appLayout.putConstraint(SpringLayout.WEST, checkerButton, 6, SpringLayout.EAST, chatButton);
 	}
-	
+
 	private void setupListeners()
 	{
 		chatButton.addActionListener(new ActionListener()
@@ -81,8 +83,9 @@ public class ChatPanel extends JPanel
 			{
 				inputField.setText("quit");
 				String userText = inputField.getText();
-				String displayText = appController.interactWithChatbot(userText);
+				String displayText = appController.useCheckers(userText);
 				chatArea.append(displayText);
+				inputField.setText("");
 			}
 		});
 	}
