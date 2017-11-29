@@ -198,8 +198,16 @@ public class Chatbot
 	{
 		input = "<B>  </B>";
 		input = "<>";
-		
-		return true;
+		if(input.contains("<B>  </B>") && input.contains("<I> sdadas </i>") && input.contains("<P>")
+				&& input.contains("<A HREF=\\\"sdfs.html\\\"> </a>") && input.contains("")
+				)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	
