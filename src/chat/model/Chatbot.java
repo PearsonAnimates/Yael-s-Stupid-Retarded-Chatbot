@@ -196,18 +196,46 @@ public class Chatbot
 	
 	public boolean htmlTagChecker(String input)
 	{
-		input = "<B>  </B>";
-		input = "<>";
-		if(input.contains("<B>  </B>") && input.contains("<I> sdadas </i>") && input.contains("<P>")
-				&& input.contains("<A HREF=\\\"sdfs.html\\\"> </a>") && input.contains("")
-				)
-		{
-			return true;
+		boolean valid = false;
+		boolean length = true;
+		int len = input.length();
+		int one = input.indexOf("<") + 1;
+		int two = input.indexOf(">");
+		int three = input.indexOf("<" + "/") + 2;
+		String temp = input;
+		temp = temp.replaceFirst(">"," ");
+		int four = temp.indexOf(">");
+		if (len < 3) {
+			length = false;
 		}
-		else
-		{
-			return false;
+		if(length && three > one && four > two && input.toLowerCase().substring(one, two)
+				.contains(input.toLowerCase().substring(three, four))) {
+			valid = true;
 		}
+		if (length && input.substring(one, two).equalsIgnoreCase("p")
+				|| length && input.substring(one, two).equalsIgnoreCase("br")) {
+			valid = true;
+		}
+		String a = "";
+		if (length) {
+			a = input.toLowerCase().substring(one, two);
+		}
+		if (a.contains("a href")) {
+			if (!a.contains("a href=") && !a.contains("a href =")) {
+				valid = false;
+			}
+		}
+		return valid;
+//		if(input.contains("<B>  </B>") && input.contains("<I> sdadas </i>") && input.contains("<P>")
+//				&& input.contains("<A HREF=\\\"sdfs.html\\\"> </a>") && input.contains("")
+//				)
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			return false;
+//		}
 	}
 	
 	
