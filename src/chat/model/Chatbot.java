@@ -37,7 +37,7 @@ public class Chatbot
 		this.currentTime = LocalTime.now();
 		this.topics = new String [3];
 		this.verbs = new String [4];
-		this.followUps = null;
+		this.followUps = new String[5];
 		
 		buildverbs();
 		buildTopics();
@@ -155,25 +155,26 @@ public class Chatbot
 			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
 		
-		//Broken code apparently
-//		int followup = (int) (Math.random() * 5);
-//				
-//		switch (followup)
-//		{
-//		case 0:
-//			response += followUps[0] + "\n";
-//			break;
-//		case 3:
-//			response += followUps[1] + "\n";
-//			break;
-//		case 1:
-//			response += followUps[2] + "\n";
-//		default:
-//			response += followUps[4] + "\n";
-//			response += followUps[3] + "\n";
-//			break;
-//		}
-//		
+		
+		int followup = (int) (Math.random() * 5);
+				
+		switch (followup)
+		{
+		case 0:
+			response += followUps[0] + "\n";
+			break;
+		case 3:
+			response += followUps[1] + "\n";
+			break;
+		case 1:
+			response += followUps[2] + "\n";
+			break;
+		default:
+			response += followUps[4] + "\n";
+			response += followUps[3] + "\n";
+			break;
+		}
+		
 		return response;
 	}
 
