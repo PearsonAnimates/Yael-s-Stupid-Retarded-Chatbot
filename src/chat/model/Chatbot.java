@@ -264,12 +264,28 @@ public class Chatbot
 	
 	public boolean contentChecker(String contentCheck)
 	{
-		return false;
+		if(content.equals(contentCheck))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean cuteAnimalMemeChecker(String input)
 	{
-		return false;
+		boolean isinlist = false;
+		for (int index = 0; index < cuteAnimalMemes.size(); index ++)
+		{
+			String current = cuteAnimalMemes.get(index);
+			if(current.equals(input))
+			{
+				isinlist = true;
+			}
+		}
+		return isinlist;
 	}
 	
 	public boolean shoppingListChecker(String shoppingItem)
