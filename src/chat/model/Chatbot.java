@@ -82,16 +82,16 @@ public class Chatbot
 	 */
 	private void buildMovieList()
 	{
-		Movie Calvinv1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
-		Movie Calvinv2 = new Movie("Chicken Run");
-		Movie Calvinv3 = new Movie("Turd III");
-		Movie Calvinv4 = new Movie("Calvin is trying to convince Porker he's gay... At this point I'm not sure if he's lying");
-		Movie Calvinv5 = new Movie("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
-		movieList.add(Calvinv1);
-		movieList.add(Calvinv2);
-		movieList.add(Calvinv3);
-		movieList.add(Calvinv4);
-		movieList.add(Calvinv5);
+		Movie CalvinV1 = new Movie("The Lord Of The Rings Trilogy: Extended Edition");
+		Movie CalvinV2 = new Movie("Chicken Run");
+		Movie CalvinV3 = new Movie("Turd III");
+		Movie CalvinV4 = new Movie("Calvin is trying to convince Porker he's gay... At this point I'm not sure if he's lying");
+		Movie CalvinV5 = new Movie("The greatest YT video of all time --> https://youtu.be/36Ua6qAGcFw <--- this is the $H¡+ Minecraft Mod Showcase by Ssundee");
+		movieList.add(CalvinV1);
+		movieList.add(CalvinV2);
+		movieList.add(CalvinV3);
+		movieList.add(CalvinV4);
+		movieList.add(CalvinV5);
 	}
 	
 	/*
@@ -110,8 +110,10 @@ public class Chatbot
 	 */
 	private void buildCuteAnimalMemes()
 	{
-		cuteAnimalMemes.add("This is supposed to be a meme, I don't know if I should actually add an image or not... *snores*"
-				+ " *lazy*");
+		cuteAnimalMemes.add("floofer");
+		cuteAnimalMemes.add("otter");
+		cuteAnimalMemes.add("kittie");
+		cuteAnimalMemes.add("pupper");
 	}
 	
 	/**
@@ -376,6 +378,7 @@ public class Chatbot
 	
 	public String getContent()
 	{
+		String content = "";
 		return content;
 	}
 
