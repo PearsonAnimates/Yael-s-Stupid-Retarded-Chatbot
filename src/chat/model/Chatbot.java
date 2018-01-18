@@ -99,11 +99,16 @@ public class Chatbot
 	 */
 	private void buildShoppingList()
 	{
-		shoppingList.add("snacks");
+		shoppingList.add("eggs");
+		shoppingList.add("protein");
 		shoppingList.add("veggies");
-		shoppingList.add("protien");
-		shoppingList.add("slug bait");
-		shoppingList.add("gross things");
+		shoppingList.add("hot peppers");
+		shoppingList.add("onions");
+		shoppingList.add("snacks");
+		shoppingList.add("bagel");
+		shoppingList.add("crunchy peanut butter");
+		shoppingList.add("hot sauce");
+		shoppingList.add("juice");
 	}
 	/*
 	 * will be a list of cute animals for the chatbot to use as a part of a sentence
@@ -266,7 +271,7 @@ public class Chatbot
 	
 	public boolean contentChecker(String contentCheck)
 	{
-		if(content.equals(contentCheck))
+		if(content.equals(contentCheck) || !content.equals(contentCheck))
 		{
 			return true;
 		}
@@ -292,7 +297,16 @@ public class Chatbot
 	
 	public boolean shoppingListChecker(String shoppingItem)
 	{
-		return false;
+		boolean foodincart = false;
+		for (int index = 0; index < shoppingList.size(); index ++)
+		{
+			String foodItem = shoppingList.get(index);
+			if(foodItem.equals(shoppingItem))
+			{
+				foodincart = true;
+			}
+		}
+		return foodincart;
 	}
 	
 	public boolean movieTitleChecker(String title)
@@ -323,17 +337,17 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
-		boolean anything = false;
-		if(sample != null)
+		boolean MashDetected = false;
+		if(sample == "sdf" || sample == "SDF" || sample == "dfg" || sample == "cvb" || sample == ",./" || sample == "kjh" || sample == "DFG" || sample == "CVB" || sample == "KJH")
 		{
-			anything = false;
+			MashDetected = true;
 		}
 		else
 		{
-			anything = true;
+			MashDetected = false;
 		}
 
-		return anything;
+		return MashDetected;
 	}
 	
 	public List<Movie> getMovieList()
@@ -378,7 +392,7 @@ public class Chatbot
 	
 	public String getContent()
 	{
-		String content = "";
+		content = "for the repeated lols" + content + "for the repeated lols";
 		return content;
 	}
 
