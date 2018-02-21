@@ -4,18 +4,21 @@ import chat.model.Chatbot;
 import chat.view.PopupDisplay;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
+import chat.model.CTECTwitter;
 
 public class ChatbotController
 {
 	private Chatbot chatbot;
 	private PopupDisplay display;
 	private ChatFrame appFrame;
+	private CTECTwitter myTwitter;
 	
 	public ChatbotController()
 	{
 		chatbot = new Chatbot("food");
-		display = new PopupDisplay();
+		myTwitter = new CTECTwitter(this);
 		//View initialized after Model
+		display = new PopupDisplay();
 		appFrame = new ChatFrame(this);
 	}
 	
@@ -88,6 +91,11 @@ public class ChatbotController
 	public void handleErrors(Exception error)
 	{
 		display.displayText(error.getMessage());
+	}
+	
+	public void tweet(String text)
+	{
+		myTwitter.sendTweet(text);
 	}
 	
 }
