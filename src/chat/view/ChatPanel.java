@@ -1,22 +1,20 @@
 package chat.view;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 import chat.controller.ChatbotController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
-//Need import for scrollpane
-import javax.swing.JScrollPane;
+import java.awt.*;
 
 public class ChatPanel extends JPanel
 {
 	private ChatbotController appController;
 	private JButton chatButton;
+	private JButton loadButton;
+	private JButton saveButton;
+	private JButton tweetButton;
+	private JButton searchButton;
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
@@ -31,11 +29,17 @@ public class ChatPanel extends JPanel
 		this.appController = appController;
 
 		// Init GUI data members
-		chatButton = new JButton("chat");
+		chatButton = new JButton("chat", new ImageIcon(getClass().getResource("chat/viwe/images/message.png")));
+		loadButton = new JButton("load", new ImageIcon(getClass().getResource("chat/viwe/images/load.png")));
+		tweetButton = new JButton("tweet", new ImageIcon(getClass().getResource("chat/viwe/images/twitter.png")));
+		searchButton = new JButton("search", new ImageIcon(getClass().getResource("chat/viwe/images/search.png")));
+		saveButton = new JButton("save", new ImageIcon(getClass().getResource("chat/viwe/images/Save.png")));
 		chatArea = new JTextArea(10, 25);
 		inputField = new JTextField(20);
 		infoLabel = new JLabel("Type to talk to stupid bot");
 		appLayout = new SpringLayout();
+		appLayout.putConstraint(SpringLayout.NORTH, searchButton, 0, SpringLayout.NORTH, chatButton);
+		appLayout.putConstraint(SpringLayout.WEST, searchButton, 60, SpringLayout.EAST, inputField);
 		//init the scrollpane
 		chatScrollPane = new JScrollPane();
 
@@ -57,9 +61,14 @@ public class ChatPanel extends JPanel
 	
 	private void setupPanel()
 	{
+		this.setMinimumSize(new Dimension(800, 600));
 		this.setBackground(Color.CYAN);
 		this.setLayout(appLayout);
 		this.add(chatButton);
+		this.add(searchButton);
+		this.add(loadButton);
+		this.add(saveButton);
+		this.add(tweetButton);
 		this.add(infoLabel);
 		this.add(chatScrollPane);
 		this.add(inputField);
