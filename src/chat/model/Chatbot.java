@@ -137,8 +137,7 @@ public class Chatbot
 		
 		return chatbotResponse;
 	}
-	
-	
+		
 	/**
 	 * Randomly selects pre-selected short phrases/words to make a sentence, but will not gaurantee flow of words.
 	 * @return Returns pre-selected short phrases/words and outputs them <-- it will be visible on popup to the user.
@@ -186,7 +185,6 @@ public class Chatbot
 		
 		return response;
 	}
-
 	
 	/**
 	 * Checks if user input 3 characters or more, if not, the program goes crash, burn, and die.
@@ -205,6 +203,7 @@ public class Chatbot
 		return validLength;
 	}
 	
+	//method to check for html strings
 	public boolean htmlTagChecker(String input)
 	{
 		boolean valid = false;
@@ -251,7 +250,7 @@ public class Chatbot
 	
 	
 	// Need to fix the dumb username
-	
+	//broken username checker
 	public boolean userNameChecker(String input)
 	{
 		boolean UsernameChecker = false;
@@ -269,6 +268,7 @@ public class Chatbot
 		
 	}
 	
+	//method to check content
 	public boolean contentChecker(String contentCheck)
 	{
 		if(content.equals(contentCheck) || !content.equals(contentCheck))
@@ -281,6 +281,7 @@ public class Chatbot
 		}
 	}
 	
+	//method to check cute animal memes
 	public boolean cuteAnimalMemeChecker(String input)
 	{
 		boolean isinlist = false;
@@ -295,6 +296,7 @@ public class Chatbot
 		return isinlist;
 	}
 	
+	//method to check shopping list
 	public boolean shoppingListChecker(String shoppingItem)
 	{
 		boolean foodincart = false;
@@ -309,16 +311,19 @@ public class Chatbot
 		return foodincart;
 	}
 	
+	//method to check movie titles (useless method that compiles.)
 	public boolean movieTitleChecker(String title)
 	{
 		return false;
 	}
 	
+	//method to check movie genres (useless method that compiles.)
 	public boolean movieGenreChecker(String genre)
 	{
 		return false;
 	}
 
+	//method to check if the user input string is quit
 	public boolean quitChecker(String exitString)
 	{	
 		if(exitString.equals("Quit"))
@@ -335,6 +340,7 @@ public class Chatbot
 		}
 	}
 
+	//method that checks for keyboard mashing
 	public boolean keyboardMashChecker(String sample)
 	{
 		boolean MashDetected = false;
@@ -350,67 +356,80 @@ public class Chatbot
 		return MashDetected;
 	}
 	
+	//method to get movie list
 	public List<Movie> getMovieList()
 	{
 		return movieList;
 	}
 	
+	//method to get shopping list
 	public List<String> getShoppingList()
 	{
 		return shoppingList;
 	}
 	
+	//method to get cute animal memes
 	public List<String> getCuteAnimalMemes()
 	{
 		return cuteAnimalMemes;
 	}
 
+	//method to get questions for the chatbot
 	public String [] getQuestions()
 	{
 		return null;
 	}
 	
+	//method to get verbs for chatbot
 	public String[] getverbs()
 	{
 		return verbs;
 	}
 
+	//method to get topics
 	public String[] getTopics()
 	{
 		return topics;
 	}
 
+	//method to get followups
 	public String[] getFollowUps()
 	{
 		return followUps;
 	}
 
+	//method to get usernames
 	public String getUsername()
 	{
 		return username;
 	}
 	
+	//method to get content
 	public String getContent()
 	{
 		content = "for the repeated lols" + content + "for the repeated lols";
 		return content;
 	}
 
+	//method to get intro
 	public String getIntro()
 	{
 		return null;
 	}
 	
+	//method to get the current time of day, including the date (useless method that compiles.)
 	public LocalTime getCurrentTime()
 	{
 		return null;
 	}
 	
+	//method that sets the username 
 	public void setUsername(String username)
 	{
 		this.username = username;
 	}
 	
+	//method to set content
 	public void setContent(String content)
 	{
 		this.content = content;

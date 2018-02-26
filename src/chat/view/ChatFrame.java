@@ -5,8 +5,11 @@ import javax.swing.JFrame;
 
 public class ChatFrame extends JFrame
 {
+	//private data members for appController/Panel
 	private ChatbotController appController;
 	private ChatPanel appPanel;
+	
+	//creates actual method that puts together the frame and panel and initializes the app interface
 	public ChatFrame(ChatbotController appController)
 	{
 		super();
@@ -15,6 +18,7 @@ public class ChatFrame extends JFrame
 		setupFrame();
 	}
 	
+	//sets up frame around panel chatbot takes place
 	private void setupFrame()
 	{
 		this.setContentPane(appPanel);
@@ -24,6 +28,7 @@ public class ChatFrame extends JFrame
 		this.setVisible(true);
 	}
 	
+	//method to get app controller
 	public ChatbotController getappController()
 	{
 		return appController;
