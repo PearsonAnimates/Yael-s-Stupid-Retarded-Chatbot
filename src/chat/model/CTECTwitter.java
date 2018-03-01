@@ -44,6 +44,10 @@ public class CTECTwitter
 		boringWords = new String [wordCount];
 		wordScanner.close();
 		
+		// Alternative file loading method.
+		// Uses the InputStream class
+		// Notice the lack of try/catch
+		
 		wordScanner = new Scanner(this.getClass().getResourceAsStream("data/commonWords.txt"));
 		for(int index = 0; index < boringWords.length; index++)
 		{
