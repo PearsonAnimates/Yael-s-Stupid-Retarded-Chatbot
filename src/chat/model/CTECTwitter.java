@@ -5,10 +5,14 @@ import chat.controller.IOController;
 
 import twitter4j.*;
 
+import java.util.*;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+
+import java.util.HashMap;
 
 public class CTECTwitter
 {
@@ -17,6 +21,7 @@ public class CTECTwitter
 	private List<Status> searchedTweets;
 	private List<String> tweetedWords;
 	private long totalWordCount;
+	private HashMap<String, Integer> wordsAndCount;
 	
 	public CTECTwitter(ChatbotController appController)
 	{
@@ -79,7 +84,8 @@ public class CTECTwitter
 	{
 		for(Status currentStatus : searchedTweets)
 		{
-			String tweetText = currentStatus.getText();
+			String tweetText = currentStatus.getText().toLowerCase();
+			tweetText = tweetText.replace("\n"," ");
 			String [] tweetWords = tweetText.split(" ");
 			for(int index = 0; index < tweetWords.length; index++)
 			{
@@ -105,10 +111,10 @@ public class CTECTwitter
 				ResponseList<Status> listedTweets = chatbotTwitter.getUserTimeline(username, statusPage);
 				for(Status current : listedTweets)
 				{
-					if(current.getID() < lastID)
+					if(current.getId() < lastID)
 					{
 						searchedTweets.add(current);
-						lastID = current.getID();
+						lastID = current.getId();
 					}
 				}
 			}
@@ -135,6 +141,14 @@ public class CTECTwitter
 		return scrubbedString;
 	}
 	
+	private ArrayList<Map.Entry<String, Integer>> sortHashMap()
+	{
+		ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(wordsAndCount.entrySet());
+		entries.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+		
+		return entries;
+	}
+	
 	public String getMostCommonWord(String username)
 	{
 		String mostCommon = "";
@@ -143,7 +157,60 @@ public class CTECTwitter
 		turnStatusesToWords();
 		totalWordCount = tweetedWords.size();
 		String [] boring = createIgnoredWordArray();
+		trimTheBoringWords(boring);
+		removeBlanks();
+		generateWordCount();
+		
+		ArrayList<Map.Entry<String, Integer>> sorted = sortHashMap();
+		
+		String mostCommonWord = sorted.get(0).getKey();
+		int maxWord = 0;
+		
+		maxWord = sorted.get(0).getValue();
+		
+		mostCommon = "The most common word in " + username + "'s"+ searchedTweets.size() + " tweets is " + mostCommonWord + ", and it was used " + maxWord + "times.\nThis is " + (DecimalFormat.getPercentInstance().format(((double)maxWord)/totalWordCount)) + " of total words: :" + totalWordCount + " and is " + (DecimalFormat.getPercentInstance().format(((double)maxWord)/wordsAndCount.size())) + " of the unique words: " + wordsAndCount.size();
 		
 		return mostCommon;
+	}
+	
+	private void removeBlanks()
+	{
+		for (int index = tweetedWords.size() - 1; index >= 0; index--)
+		{
+			if (tweetedWords.get(index).trim().length() == 0)
+			{
+				tweetedWords.remove(index);
+			}
+		}
+	}
+	
+	private void generateWordCount()
+	{
+		for (String word : tweetedWords)
+		{
+			if(!wordsAndCount.containsKey(word.toLowerCase()))
+			{
+				wordsAndCount.put(word.toLowerCase(), 1);
+			}
+			else
+			{
+				wordsAndCount.replace(word.toLowerCase(), wordsAndCount.get(word.toLowerCase()) + 1);
+			}
+		}
+	}
+	
+	private void trimTheBoringWords(String [] boringWords)
+	{
+		for (int index = tweetedWords.size() - 1; index >= 0; index--)
+		{
+			for(int removeIndex = 0; removeIndex < boringWords.length; removeIndex++)
+			{
+				if (tweetedWords.get(index).equals(boringWords[removeIndex]))
+				{
+					tweetedWords.remove(index);
+					removeIndex = boringWords.length;
+				}
+			}
+		}
 	}
 }
