@@ -29,6 +29,7 @@ public class CTECTwitter
 		this.searchedTweets = new ArrayList<Status>();
 		this.tweetedWords = new ArrayList<String>();
 		this.chatbotTwitter = TwitterFactory.getSingleton();
+		this.wordsAndCount = new HashMap<String, Integer>();
 		this.totalWordCount = 0;
 	}
 
